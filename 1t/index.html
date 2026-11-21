@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f5f1" />
+    <title>Weeknote — Project feedback</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Weeknote home"
+          ><span class="brand-mark">w</span><span>weeknote</span></a
+        >
+        <div class="workspace-label">WORKSPACE</div>
+        <button class="workspace">
+          <span class="workspace-icon">✳</span><span>Studio North</span
+          ><span class="chevron">⌄</span>
+        </button>
+        <div class="nav-label">YOUR SPACE</div>
+        <nav aria-label="Main navigation">
+          <a class="nav-item active" href="#overview"><span>▦</span> Overview</a
+          ><a class="nav-item" href="#projects"
+            ><span>◇</span> Projects
+            <span id="projectNavCount" class="nav-count">0</span></a
+          ><a class="nav-item" href="#feedback"><span>◷</span> Feedback</a>
+        </nav>
+        <div class="side-bottom">
+          <div class="avatar">JD</div>
+          <div><strong>Jordan Davis</strong><small>Product lead</small></div>
+          <button class="dots" aria-label="Account menu">···</button>
+        </div>
+      </aside>
+      <section class="main-area" id="overview">
+        <header class="topbar">
+          <div class="breadcrumbs">
+            Studio North <span>/</span> <b>Overview</b>
+          </div>
+          <div class="top-actions">
+            <span class="week-pill"
+              ><i></i> Week of <span id="weekDate"></span></span
+            ><button
+              class="icon-button"
+              title="Notifications"
+              aria-label="Notifications"
+            >
+              ♧
+            </button>
+            <div class="avatar small">JD</div>
+          </div>
+        </header>
+        <div class="content">
+          <div class="intro">
+            <div>
+              <div class="eyebrow">MONDAY, <span id="todayDate"></span></div>
+              <h1>Good morning, Jordan <span>✳</span></h1>
+              <p>A little progress, shared every week.</p>
+            </div>
+            <button class="primary" id="newFeedback">
+              <span>＋</span> Write weekly update
+            </button>
+          </div>
+          <div class="section-heading">
+            <div>
+              <h2>Your projects</h2>
+              <p>A pulse check on the work that matters.</p>
+            </div>
+            <button class="text-button" id="addProject">＋ Add project</button>
+          </div>
+          <div class="project-grid" id="projectGrid"></div>
+          <section class="feedback-section" id="feedback">
+            <div class="section-heading feedback-heading">
+              <div>
+                <h2>Recent feedback</h2>
+                <p>Small check-ins. Clearer next steps.</p>
+              </div>
+              <button class="filter-button" id="filterButton">
+                All projects <span>⌄</span>
+              </button>
+            </div>
+            <div class="feedback-list" id="feedbackList"></div>
+          </section>
+          <footer>Made for thoughtful progress <span>✳</span></footer>
+        </div>
+      </section>
+    </main>
+    <dialog id="feedbackDialog">
+      <form method="dialog" id="feedbackForm">
+        <div class="dialog-top">
+          <div>
+            <div class="eyebrow">WEEKLY CHECK-IN</div>
+            <h2>Share your progress</h2>
+          </div>
+          <button class="close" value="cancel" aria-label="Close">×</button>
+        </div>
+        <label>Project<select id="feedbackProject" required></select></label>
+        <div class="form-row">
+          <label>Week of<input type="date" id="feedbackWeek" required /></label
+          ><label
+            >How’s it going?<select id="feedbackMood">
+              <option value="On track">🟢 On track</option>
+              <option value="Needs attention">🟡 Needs attention</option>
+              <option value="At risk">🔴 At risk</option>
+            </select></label
+          >
+        </div>
+        <label
+          >What moved forward?<textarea
+            id="feedbackProgress"
+            rows="3"
+            placeholder="Share a win or meaningful progress…"
+            required
+          ></textarea></label
+        ><label
+          >What’s next?<textarea
+            id="feedbackNext"
+            rows="2"
+            placeholder="The next small step…"
+          ></textarea></label
+        ><label
+          >Anything blocking progress?<textarea
+            id="feedbackBlockers"
+            rows="2"
+            placeholder="Optional — call out where you need help"
+          ></textarea>
+        </label>
+        <div class="dialog-actions">
+          <button class="secondary" value="cancel">Cancel</button
+          ><button class="primary" id="saveFeedback" value="default">
+            Post update <span>→</span>
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="projectDialog">
+      <form method="dialog" id="projectForm">
+        <div class="dialog-top">
+          <div>
+            <div class="eyebrow">NEW PROJECT</div>
+            <h2>Add a project</h2>
+          </div>
+          <button class="close" value="cancel" aria-label="Close">×</button>
+        </div>
+        <label
+          >Project name<input
+            id="projectName"
+            required
+            placeholder="e.g. Website refresh" /></label
+        ><label
+          >One-line description<input
+            id="projectDescription"
+            placeholder="What are you working toward?" /></label
+        ><label
+          >Project color<select id="projectColor">
+            <option value="lilac">Lilac</option>
+            <option value="mint">Mint</option>
+            <option value="peach">Peach</option>
+            <option value="blue">Blue</option>
+          </select></label
+        >
+        <div class="dialog-actions">
+          <button class="secondary" value="cancel">Cancel</button
+          ><button class="primary" id="saveProject" value="default">
+            Add project <span>→</span>
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
