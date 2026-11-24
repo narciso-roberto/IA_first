@@ -1,0 +1,4 @@
+- Tasks are GitHub issues, one at a time
+- Read the acceptance criteria before starting and before closing
+- Commit regularly using the pattern conventional commit
+- at the end of each commit menssage, put a smile face like that "=)"
